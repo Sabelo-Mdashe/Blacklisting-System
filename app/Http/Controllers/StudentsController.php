@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Student;
+
 
 use Illuminate\Http\Request;
 
@@ -11,7 +13,9 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //
+        $students = Student::all();
+
+        return view('pages.students')->with('students', $students);
     }
 
     /**
@@ -27,7 +31,25 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'surname' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'university' => 'required'
+        ]);
+
+        $student = new Student;
+        $student->name = $request->input('name');
+        $student->surname = $request->input('surname');
+        $student->address = $request->input('address');
+        $student->city = $request->input('city');
+        $student->province = $request->input('province');
+        $student->university = $request->input('university');
+        $student->save();
+
+        return redirect('/students');
     }
 
     /**

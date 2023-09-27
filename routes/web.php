@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\StudentsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,4 +18,6 @@ Route::get('/', [PagesController::class, 'index']);
 
 Route::get('/schools', [PagesController::class, 'schools']);
 
-Route::get('/students', [PagesController::class, 'students']);
+Route::get('/create', [PagesController::class, 'createTeacher']);
+
+Route::resource('/students', StudentsController::class);

@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('blacklistings', function (Blueprint $table) {
             $table->id();
-            $table->mediumText('Blacklisting Reason');
+            // $table->mediumText('Blacklisting_Reason');
             $table->string('School');
-            $table->int('StudentId');
+            // $table->int('StudentId');
             $table->timestamps();
         });
     }
