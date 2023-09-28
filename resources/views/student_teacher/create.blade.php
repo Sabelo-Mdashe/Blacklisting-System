@@ -1,7 +1,7 @@
 @extends('layout.app')
     @section('content')
         <h1 @class(['mt-3', 'mb-3'])>Create Student Teacher</h1>
-        <form action="{{ route('students.store') }}" method="POST" @class(['d-flex', 'gap-4', 'flex-column'])>
+        <form action="{{ route('students.create') }}" method="POST" @class(['d-flex', 'gap-4', 'flex-column'])>
             <div @class(['form-group'])>
                 <label for="name">First Name</label>
                 <input type="text" name="name" @class(['form-control', 'w-50'])>

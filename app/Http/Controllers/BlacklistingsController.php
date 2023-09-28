@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\School;
 use Illuminate\Http\Request;
+use App\Models\Blacklisting;
 
-class SchoolsController extends Controller
+class BlacklistingsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $schools = School::all();
+        $blacklistings = Blacklisting::all();
 
-        return view('pages.schools')->with('schools', $schools);
+        return view('pages.blacklistings')->with('blacklistings', $blacklistings);
     }
 
     /**
@@ -38,9 +38,9 @@ class SchoolsController extends Controller
      */
     public function show(string $id)
     {
-        $school = School::find($id);
+        $blacklisting = Blacklisting::find($id);
 
-        return view('school.show')->with('school', $school);
+        return view('blacklisting.show')->with('blacklisting', $blacklisting);
     }
 
     /**

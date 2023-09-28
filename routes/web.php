@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BlacklistingsController;
+use App\Http\Controllers\SchoolsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\StudentsController;
@@ -16,8 +18,12 @@ use App\Http\Controllers\StudentsController;
 
 Route::get('/', [PagesController::class, 'index']);
 
-Route::get('/schools', [PagesController::class, 'schools']);
+// Route::get('/schools', [PagesController::class, 'schools']);
 
 Route::get('/create', [PagesController::class, 'createTeacher']);
 
 Route::resource('/students', StudentsController::class);
+
+Route::resource('/blacklistings', BlacklistingsController::class);
+
+Route::resource('/schools', SchoolsController::class);

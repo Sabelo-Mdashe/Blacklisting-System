@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('blacklistings', function (Blueprint $table) {
             $table->id();
             // $table->mediumText('Blacklisting_Reason');
-            $table->string('School');
+            $table->string('candidate_firstname');
+            $table->string('candidate_lastname');
+            $table->string('school');
+            $table->mediumText('blacklist_reason');
             // $table->int('StudentId');
             $table->timestamps();
         });

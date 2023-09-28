@@ -4,13 +4,13 @@
             <input class="me-2 p-2" style="border: 1px lightgrey solid; border-radius: .5em" type="search" placeholder="Search Student" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form> --}}
-        <h1 @class(['mt-3', 'mb-3'])>Student Teacher List</h1>
-        {{-- @if (count($students < 0)) --}}
-            <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
+        <h1 @class(['mt-3', 'mb-3'])>Student Teachers</h1>
+        {{-- @if (count($students > 0)) --}}
+            {{-- <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
                 <a href="/create">
                     <button @class(['btn', 'btn-default', 'btn-success'])>Add Student Teacher</button>
                 </a>
-            </div>
+            </div> --}}
             <table class="table">
                 <thead>
                   <tr>
@@ -28,7 +28,7 @@
                     @foreach ($students as $student)
                     <tr>
                         <th scope="row">{{ $student->id }}</th>
-                        <td>{{ $student->name }}</td>
+                        <td><a href="/students/{{ $student->id }}" style="color: blue">{{ $student->name }}</a></td>
                         <td>{{ $student->surname }}</td>
                         <td>{{ $student->address }}</td>
                         <td>{{ $student->city }}</td>

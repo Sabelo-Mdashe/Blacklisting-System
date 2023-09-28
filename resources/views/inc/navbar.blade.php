@@ -15,6 +15,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/students">Students</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/blacklistings">Blacklistings</a>
+          </li>
         </ul>
       </div>
     </div>
