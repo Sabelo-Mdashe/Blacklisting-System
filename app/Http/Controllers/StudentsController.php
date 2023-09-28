@@ -66,7 +66,9 @@ class StudentsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $student = Student::find($id);
+        // $student->name
+        return view('student_teacher.edit')->with('student', $student);
     }
 
     /**
@@ -74,7 +76,26 @@ class StudentsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'surname' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'university' => 'required'
+        ]);
+
+        $student = Student::find($id);
+        $student->name = $request->input('name');
+        $student->surname = $request->input('surname');
+        $student->address = $request->input('address');
+        $student->city = $request->input('city');
+        $student->province = $request->input('province');
+        $student->university = $request->input('university');
+        $student->update();
+
+        return view('student_teacher.show')->with('student', $student);
+
     }
 
     /**

@@ -60,7 +60,9 @@ class SchoolsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $school = School::find($id);
+        return view('school.edit')->with('school', $school);
     }
 
     /**
@@ -68,7 +70,21 @@ class SchoolsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $this->validate($request, [
+            'name' => 'required',
+            'city' => 'required',
+            'province' => 'required'
+        ]);
+
+        $school = School::find($id);
+        $school->name = $request->input('name');
+        $school->city = $request->input('city');
+        $school->province = $request->input('province');
+        $school->update();
+
+        return view('school.show')->with('school', $school);
+        
     }
 
     /**
