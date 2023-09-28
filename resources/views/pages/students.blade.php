@@ -6,11 +6,11 @@
         </form> --}}
         <h1 @class(['mt-3', 'mb-3'])>Student Teachers</h1>
         {{-- @if (count($students > 0)) --}}
-            {{-- <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
-                <a href="/create">
+            <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
+                <a href="/students/create">
                     <button @class(['btn', 'btn-default', 'btn-success'])>Add Student Teacher</button>
                 </a>
-            </div> --}}
+            </div>
             <table class="table">
                 <thead>
                   <tr>
@@ -22,19 +22,23 @@
                     <th scope="col">Province</th>
                     <th scope="col">University</th>
                     <th scope="col">Created On</th>
+                    {{-- <th>Actions</th> --}}
                   </tr>
                 </thead>
                 <tbody>
                     @foreach ($students as $student)
                     <tr>
-                        <th scope="row">{{ $student->id }}</th>
-                        <td><a href="/students/{{ $student->id }}" style="color: blue">{{ $student->name }}</a></td>
-                        <td>{{ $student->surname }}</td>
-                        <td>{{ $student->address }}</td>
-                        <td>{{ $student->city }}</td>
-                        <td>{{ $student->province }}</td>
-                        <td>{{ $student->university }}</td>
-                        <td>{{ $student->created_at }}</td>
+                        {{-- <form action="{{ route('blacklistings.store') }}" method="POST"> --}}
+                            <th scope="row">{{ $student->id }}</th>
+                            <td><a href="/students/{{ $student->id }}" style="color: blue">{{ $student->name }}</a></td>
+                            <td>{{ $student->surname }}</td>
+                            <td>{{ $student->address }}</td>
+                            <td>{{ $student->city }}</td>
+                            <td>{{ $student->province }}</td>
+                            <td>{{ $student->university }}</td>
+                            <td>{{ $student->created_at }}</td>
+                            {{-- <td><button @class(['submit', 'btn', 'btn-default', 'btn-danger']) type="submit">Blacklist</button></td> --}}
+                        </form>
                     </tr>
                     @endforeach
                 </tbody>
@@ -44,8 +48,8 @@
         @endif --}}
     @endsection
 
-    {{-- <style>
-        .me-2 {
-            : 
+    <style>
+        .submit {
+            background-color:crimson!important;
         }
-    </style> --}}
+    </style>

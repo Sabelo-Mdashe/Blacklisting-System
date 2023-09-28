@@ -5,7 +5,11 @@
             <input class="me-2 p-2" type="search" placeholder="Search School" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form> --}}
-
+        <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
+            <a href="/schools/create">
+                <button @class(['btn', 'btn-default', 'btn-success'])>Add School</button>
+            </a>
+        </div>
         <table class="table">
             <thead>
               <tr>

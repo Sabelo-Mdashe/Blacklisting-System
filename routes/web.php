@@ -20,7 +20,7 @@ Route::get('/', [PagesController::class, 'index']);
 
 // Route::get('/schools', [PagesController::class, 'schools']);
 
-Route::get('/create', [PagesController::class, 'createTeacher']);
+// Route::get('/create', [PagesController::class, 'createTeacher']);
 
 Route::resource('/students', StudentsController::class);
 

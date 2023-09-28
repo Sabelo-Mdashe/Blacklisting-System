@@ -22,7 +22,7 @@ class SchoolsController extends Controller
      */
     public function create()
     {
-        //
+        return view('school.create');
     }
 
     /**
@@ -30,7 +30,19 @@ class SchoolsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'city' => 'required',
+            'province' => 'required'
+        ]);
+
+        $school = new School;
+        $school->name = $request->input('name');
+        $school->city = $request->input('city');
+        $school->province = $request->input('province');
+        $school->save();
+
+        return redirect('/schools');
     }
 
     /**

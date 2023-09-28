@@ -23,7 +23,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('student_teacher.create');
     }
 
     /**
@@ -31,6 +31,7 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'required',
             'surname' => 'required',
@@ -39,7 +40,6 @@ class StudentsController extends Controller
             'province' => 'required',
             'university' => 'required'
         ]);
-
         $student = new Student;
         $student->name = $request->input('name');
         $student->surname = $request->input('surname');

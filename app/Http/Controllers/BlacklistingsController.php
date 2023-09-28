@@ -22,7 +22,7 @@ class BlacklistingsController extends Controller
      */
     public function create()
     {
-        //
+        return view('blacklisting.create');
     }
 
     /**
@@ -30,7 +30,21 @@ class BlacklistingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'surname' => 'required',
+            'university' => 'required',
+            'reason' => 'required'
+        ]);
+
+        $blacklisting = new Blacklisting;
+        $blacklisting->candidate_firstname = $request->input('name');
+        $blacklisting->candidate_lastname = $request->input('surname');
+        $blacklisting->school = $request->input('university');
+        $blacklisting->blacklist_reason = $request->input('reason');
+        $blacklisting->save();
+
+        return redirect('/blacklistings');
     }
 
     /**

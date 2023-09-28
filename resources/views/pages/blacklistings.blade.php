@@ -7,6 +7,11 @@
         @endforeach --}}
         {{-- <p>{{ $blacklisting->candidate_firstname }}</p> --}}
 
+        <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
+            <a href="/blacklistings/create">
+                <button @class(['btn', 'btn-default', 'btn-success'])>Add Blacklisting</button>
+            </a>
+        </div>
         <table class="table">
             <thead>
               <tr>
