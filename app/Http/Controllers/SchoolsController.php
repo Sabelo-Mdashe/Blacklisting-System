@@ -92,6 +92,9 @@ class SchoolsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $school = School::find($id);
+        $school->delete();
+
+        return redirect('/schools');
     }
 }

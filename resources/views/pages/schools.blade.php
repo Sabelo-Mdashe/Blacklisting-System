@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
     @section('content')
         <h1 @class(['mt-3', 'mb-3'])>Schools List</h1>
         {{-- <form class="d-flex" role="search">

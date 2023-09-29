@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\School;
 use App\Models\Student;
 
 
@@ -14,23 +16,26 @@ class StudentsController extends Controller
     public function index()
     {
         $students = Student::all();
-
         return view('pages.students')->with('students', $students);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create( )
     {
-        return view('student_teacher.create');
+        $schools = School::all();
+        return view('student_teacher.create')->with('schools', $schools);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, School $id)
     {
+
+        // $school = $id;
+
         // dd($request->all());
         $this->validate($request, [
             'name' => 'required',
@@ -46,7 +51,8 @@ class StudentsController extends Controller
         $student->address = $request->input('address');
         $student->city = $request->input('city');
         $student->province = $request->input('province');
-        $student->university = $request->input('university');
+        $student->university = $request->input('university')/*-with('id', $id)*/;
+        // $student->school_id = $id;
         $student->save();
 
         return redirect('/students');
@@ -103,6 +109,9 @@ class StudentsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+
+        return redirect('/students');
     }
 }

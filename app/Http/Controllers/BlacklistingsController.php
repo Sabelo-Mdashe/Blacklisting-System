@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blacklisting;
+use App\Models\Student;
 
 class BlacklistingsController extends Controller
 {
@@ -20,9 +21,10 @@ class BlacklistingsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create( /*string $id*/ )
     {
-        return view('blacklisting.create');
+        // $student = Student::find($id);
+        return view('blacklisting.create')/*->with('student', $student)*/;
     }
 
     /**

@@ -1,17 +1,17 @@
-@extends('layout.app')
+@extends('layouts.app')
     @section('content')
-        <h1 @class(['mt-3', 'mb-3'])>Blacklistings</h1>
+        <h1 @class(['mt-3', 'mb-5'])>Blacklistings</h1>
         {{-- @foreach ($blacklistings as $blacklisting)
         <p>{{ $blacklisting->candidate_firstname }}</p>
             
         @endforeach --}}
         {{-- <p>{{ $blacklisting->candidate_firstname }}</p> --}}
 
-        <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
+        {{-- <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
             <a href="/blacklistings/create">
                 <button @class(['btn', 'btn-default', 'btn-success'])>Add Blacklisting</button>
             </a>
-        </div>
+        </div> --}}
         <table class="table">
             <thead>
               <tr>

@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
     @section('content')
         <h1 @class(['mt-3', 'mb-3'])>Create Student Teacher</h1>
         <form action="{{ route('students.store') }}" method="POST" @class(['d-flex', 'gap-4', 'flex-column'])>
@@ -24,8 +24,14 @@
                 <input type="text" name="province" @class(['form-control', 'w-50'])>
             </div>
             <div @class(['form-group'])>
-                <label for="province">University</label>
-                <input type="text" name="university" @class(['form-control', 'w-50'])>
+                <label for="university">University</label>
+                {{-- <input type="text" name="university" @class(['form-control', 'w-50'])> --}}
+                <select name="university" @class(['form-control', 'w-50'])>
+                    <option>-- Select School --</option>
+                    @foreach ($schools as $school)
+                        <option>{{ $school->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 @csrf

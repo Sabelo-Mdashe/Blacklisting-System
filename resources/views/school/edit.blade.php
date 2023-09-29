@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
     @section('content')
         <h1 @class(['mt-3', 'mb-3'])>Update Student Teacher</h1>
         <form action="{{ route('schools.update',$school->id) }}" method="POST" @class(['d-flex', 'gap-4', 'flex-column'])>

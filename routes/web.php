@@ -27,3 +27,7 @@ Route::resource('/students', StudentsController::class);
 Route::resource('/blacklistings', BlacklistingsController::class);
 
 Route::resource('/schools', SchoolsController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

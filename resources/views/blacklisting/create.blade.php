@@ -1,6 +1,6 @@
-@extends('layout.app')
+@extends('layouts.app')
     @section('content')
-        <h1 @class(['mt-3', 'mb-3'])>Add Blacklisting</h1>
+        <h1 @class(['mt-3', 'mb-3'])>Add To Blacklisting</h1>
         <form action="{{ route('blacklistings.store') }}" method="POST" @class(['d-flex', 'gap-4', 'flex-column'])>
             <div @class(['form-group'])>
                 <label for="name">Student Name</label>
@@ -19,7 +19,7 @@
             </div> --}}
 
             <div class="form-group">
-                <textarea name="reason" class="form-control w-50" placeholder="Reason for blacklisting" style="height: 100px"></textarea>
+                <textarea required name="reason" class="form-control w-50" placeholder="Reason for blacklisting" style="height: 100px"></textarea>
                 {{-- <label for="floatingTextarea2">Comments</label> --}}
               </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
