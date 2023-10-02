@@ -51,7 +51,6 @@ class SchoolsController extends Controller
     public function show(string $id)
     {
         $school = School::find($id);
-
         return view('school.show')->with('school', $school);
     }
 

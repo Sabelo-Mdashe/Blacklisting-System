@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blacklisting;
-use App\Models\Student;
+use App\Models\School;
 
 class BlacklistingsController extends Controller
 {
@@ -24,7 +24,7 @@ class BlacklistingsController extends Controller
     public function create( /*string $id*/ )
     {
         // $student = Student::find($id);
-        return view('blacklisting.create')/*->with('student', $student)*/;
+        // return view('blacklisting.create')/*->with('student', $student)*/;
     }
 
     /**
@@ -38,7 +38,7 @@ class BlacklistingsController extends Controller
             'university' => 'required',
             'reason' => 'required'
         ]);
-
+        
         $blacklisting = new Blacklisting;
         $blacklisting->candidate_firstname = $request->input('name');
         $blacklisting->candidate_lastname = $request->input('surname');
@@ -64,7 +64,9 @@ class BlacklistingsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $blacklisting = Blacklisting::find($id);
+        $schools = School::all();
+        return view('blacklisting.edit')->with('blacklisting', $blacklisting)->with('schools', $schools);
     }
 
     /**
@@ -72,7 +74,22 @@ class BlacklistingsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'surname' => 'required',
+            'university' => 'required',
+            'reason' => 'required'
+        ]);
+
+        $blacklisting = Blacklisting::find($id);
+        $blacklisting->candidate_firstname = $request->input('name');
+        $blacklisting->candidate_lastname = $request->input('surname');
+        $blacklisting->school = $request->input('university');
+        $blacklisting->blacklist_reason = $request->input('reason');
+        $blacklisting->update();
+
+        return view('blacklisting.show')->with('blacklisting', $blacklisting);
+
     }
 
     /**
@@ -80,6 +97,9 @@ class BlacklistingsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $blacklisting = Blacklisting::find($id);
+        $blacklisting->delete();
+
+        return redirect('/blacklistings');
     }
 }

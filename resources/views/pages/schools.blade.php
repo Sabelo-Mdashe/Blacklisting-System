@@ -18,6 +18,7 @@
                 <th scope="col">City</th>
                 <th scope="col">Province</th>
                 <th scope="col">Created On</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -28,6 +29,22 @@
                     <td>{{ $school->city }}</td>
                     <td>{{ $school->province }}</td>
                     <td>{{ $school->created_at }}</td>
+                    <td>
+                        <div @class(['d-flex', 'gap-3'])>
+                            <a href="/schools/{{ $school->id }}">
+                                <i class="fa-solid fa-eye fa-fade"></i>
+                            </a>
+                            <a href="/schools/{{$school->id}}/edit">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <form action="{{ route('schools.destroy',$school->id) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                {{-- <button type="submit" @class(['mt-3', 'btn', 'btn-default', 'btn-danger'])>Delete</button> --}}
+                                <button type="submit"><i class="fa-solid fa-trash" style="color:red"></i></button>
+                            </form>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

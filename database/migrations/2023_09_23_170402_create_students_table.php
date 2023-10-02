@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('city'); 
             $table->string('province');
             $table->string('university');
+            $table->foreignId('school_id')->constrained('schools');
             $table->timestamps();
         });
     }
