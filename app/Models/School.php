@@ -14,7 +14,7 @@ class School extends Model
         return $this->hasMany(Student::class);
     }
 
-    public function blacklisting(): HasMany {
+    public function blacklistings(): HasMany {
         return $this->hasMany(Blacklisting::class);
     }
 }

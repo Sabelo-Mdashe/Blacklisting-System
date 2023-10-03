@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blacklisting;
 use App\Models\School;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class SchoolsController extends Controller
@@ -51,7 +53,8 @@ class SchoolsController extends Controller
     public function show(string $id)
     {
         $school = School::find($id);
-        return view('school.show')->with('school', $school);
+        $blacklistings = Blacklisting::all()->where('university', $school->name);
+        return view('school.show')->with('school', $school)->with('blacklistings', $blacklistings);
     }
 
     /**
@@ -61,6 +64,7 @@ class SchoolsController extends Controller
     {
 
         $school = School::find($id);
+        // $students = School::all()->students()->where('id', 1);
         return view('school.edit')->with('school', $school);
     }
 

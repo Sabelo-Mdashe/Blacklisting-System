@@ -31,11 +31,10 @@ class StudentsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, School $id)
+    public function store(Request $request)
     {
 
-        // $school = $id;
-
+        // $school = School::all();
         // dd($request->all());
         $this->validate($request, [
             'name' => 'required',
@@ -43,7 +42,7 @@ class StudentsController extends Controller
             'address' => 'required',
             'city' => 'required',
             'province' => 'required',
-            'university' => 'required'
+            'university' => 'required',
         ]);
         $student = new Student;
         $student->name = $request->input('name');
@@ -52,7 +51,7 @@ class StudentsController extends Controller
         $student->city = $request->input('city');
         $student->province = $request->input('province');
         $student->university = $request->input('university')/*-with('id', $id)*/;
-        // $student->school_id = $id;
+        // $student->school_id = $student->university->id;
         $student->save();
 
         return redirect('/students');
@@ -98,6 +97,7 @@ class StudentsController extends Controller
         $student->city = $request->input('city');
         $student->province = $request->input('province');
         $student->university = $request->input('university');
+        // $student->school_id = $request->input();
         $student->update();
 
         return view('student_teacher.show')->with('student', $student);

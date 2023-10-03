@@ -27,7 +27,7 @@
                     <th scope="col">Address</th>
                     <th scope="col">City</th>
                     <th scope="col">Province</th>
-                    <th scope="col">University</th>
+                    <th scope="col">University_Id</th>
                     <th scope="col">Actions</th>
                     {{-- <th></th> --}}
                     {{-- <th>Actions</th> --}}

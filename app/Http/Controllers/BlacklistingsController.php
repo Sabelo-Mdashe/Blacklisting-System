@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blacklisting;
 use App\Models\School;
+use App\Models\Student;
 
 class BlacklistingsController extends Controller
 {
@@ -38,12 +39,15 @@ class BlacklistingsController extends Controller
             'university' => 'required',
             'reason' => 'required'
         ]);
+
+        // $student_Id = [StudentsController::class, 'show'];
         
         $blacklisting = new Blacklisting;
         $blacklisting->candidate_firstname = $request->input('name');
         $blacklisting->candidate_lastname = $request->input('surname');
         $blacklisting->school = $request->input('university');
         $blacklisting->blacklist_reason = $request->input('reason');
+        // $blacklisting->student_id = $student_Id;
         $blacklisting->save();
 
         return redirect('/blacklistings');

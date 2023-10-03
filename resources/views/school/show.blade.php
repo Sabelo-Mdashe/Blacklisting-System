@@ -26,6 +26,9 @@
         <hr>
 
         <h4 style="color: red" @class(['mt-2', 'mb-3'])>Students Teachers Blacklisted at {{ $school->name }}</h4>
+        @foreach ($school->students as $student)
+            <p>{{ $student->name }}</p>
+        @endforeach
     @endsection
 
     <style>
