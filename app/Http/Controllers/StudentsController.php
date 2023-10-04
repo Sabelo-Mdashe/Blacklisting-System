@@ -51,7 +51,7 @@ class StudentsController extends Controller
         $student->city = $request->input('city');
         $student->province = $request->input('province');
         $student->university = $request->input('university')/*-with('id', $id)*/;
-        // $student->school_id = $student->university->id;
+        $student->school_id = $student->university;
         $student->save();
 
         return redirect('/students');

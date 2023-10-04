@@ -26,9 +26,39 @@
         <hr>
 
         <h4 style="color: red" @class(['mt-2', 'mb-3'])>Students Teachers Blacklisted at {{ $school->name }}</h4>
-        @foreach ($school->students as $student)
-            <p>{{ $student->name }}</p>
-        @endforeach
+
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                {{-- <th scope="col">ID</th> --}}
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Reason</th>
+                <th scope="col">Blacklisted On</th>
+                {{-- <th scope="col">Province</th>
+                <th scope="col">University_Id</th> --}}
+                
+                {{-- <th></th> --}}
+                {{-- <th>Actions</th> --}}
+              </tr>
+            </thead>
+            <tbody>
+                @foreach ($school->blacklistings as $blacklisting)
+                <tr>
+                    {{-- <form action="{{ route('blacklistings.store') }}" method="POST"> --}}
+                        {{-- <th scope="row">{{ $student->id }}</th> --}}
+                        <td><a>{{ $blacklisting->candidate_firstname }}</a></td>
+                        <td>{{ $blacklisting->candidate_lastname }}</td>
+                        <td>{{ $blacklisting->blacklist_reason }}</td>
+                        <td>{{ $blacklisting->created_at }}</td>
+                        {{-- <td>{{ $student->province }}</td>
+                        <td>{{ $student->university }}</td> --}}
+                    </form>
+                </tr>
+                @endforeach
+            </tbody>
+          </table>
+
     @endsection
 
     <style>

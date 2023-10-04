@@ -29,7 +29,7 @@
                 <select name="university" @class(['form-control', 'w-50'])>
                     <option>-- Select School --</option>
                     @foreach ($schools as $school)
-                        <option>{{ $school->name }}</option>
+                        <option value="{{ $school->id }}">{{ $school->name }} {{ $school->id }}</option>
                     @endforeach
                 </select>
             </div>

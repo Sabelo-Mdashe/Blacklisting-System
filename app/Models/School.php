@@ -10,9 +10,9 @@ class School extends Model
 {
     use HasFactory;
 
-    public function students(): HasMany {
-        return $this->hasMany(Student::class);
-    }
+    // public function students(): HasMany {
+    //     return $this->hasMany(Student::class);
+    // }
 
     public function blacklistings(): HasMany {
         return $this->hasMany(Blacklisting::class);

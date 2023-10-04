@@ -47,7 +47,7 @@ class BlacklistingsController extends Controller
         $blacklisting->candidate_lastname = $request->input('surname');
         $blacklisting->school = $request->input('university');
         $blacklisting->blacklist_reason = $request->input('reason');
-        // $blacklisting->student_id = $student_Id;
+        $blacklisting->school_id = $blacklisting->school;
         $blacklisting->save();
 
         return redirect('/blacklistings');
