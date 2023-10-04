@@ -27,9 +27,9 @@
                 <label for="university">University</label>
                 {{-- <input type="text" name="university" @class(['form-control', 'w-50'])> --}}
                 <select name="university" @class(['form-control', 'w-50'])>
-                    <option>-- Select School --</option>
+                    <option value="">-- Select School --</option>
                     @foreach ($schools as $school)
-                        <option value="{{ $school->id }}">{{ $school->name }} {{ $school->id }}</option>
+                        <option value="{{ $school->id }}">{{ $school->name }}</option>
                     @endforeach
                 </select>
             </div>

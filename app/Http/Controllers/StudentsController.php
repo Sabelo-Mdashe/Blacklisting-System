@@ -15,8 +15,16 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        $students = Student::all();
-        return view('pages.students')->with('students', $students);
+
+        if (!Auth()->guest()) {
+            # code...
+            $students = Student::all();
+            return view('pages.students')->with('students', $students);
+        } else {
+            # code...
+            return view('auth.login');
+        }
+        
     }
 
     /**
@@ -24,8 +32,16 @@ class StudentsController extends Controller
      */
     public function create( )
     {
-        $schools = School::all();
-        return view('student_teacher.create')->with('schools', $schools);
+
+        if (!Auth()->guest()) {
+            # code...
+            $schools = School::all();
+            return view('student_teacher.create')->with('schools', $schools);
+        } else {
+            # code...
+            return view('auth.login');
+        }
+        
     }
 
     /**
@@ -62,8 +78,16 @@ class StudentsController extends Controller
      */
     public function show(string $id)
     {
-        $student = Student::find($id);
-        return view('student_teacher.show')->with('student', $student);
+
+        if (!Auth()->guest()) {
+            # code...
+            $student = Student::find($id);
+            return view('student_teacher.show')->with('student', $student);
+        } else {
+            # code...
+            return view('auth.login');
+        }
+        
     }
 
     /**
@@ -71,9 +95,17 @@ class StudentsController extends Controller
      */
     public function edit(string $id)
     {
-        $student = Student::find($id);
-        // $student->name
-        return view('student_teacher.edit')->with('student', $student);
+
+        if (!Auth()->guest()) {
+            # code...
+            $student = Student::find($id);
+            // $student->name
+            return view('student_teacher.edit')->with('student', $student);
+        } else {
+            # code...
+            return view('auth.login');
+        }
+        
     }
 
     /**

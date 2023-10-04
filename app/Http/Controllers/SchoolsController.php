@@ -7,6 +7,8 @@ use App\Models\School;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\alert;
+
 class SchoolsController extends Controller
 {
     /**
@@ -14,9 +16,16 @@ class SchoolsController extends Controller
      */
     public function index()
     {
-        $schools = School::all();
-
-        return view('pages.schools')->with('schools', $schools);
+        if (!Auth()->guest()) {
+            # code...
+            $schools = School::all();
+            return view('pages.schools')->with('schools', $schools);
+        } else {
+            # code...
+            alert('Not Authorized to Access Page. Please login');
+            return view('auth.login');
+        }
+        
     }
 
     /**
@@ -24,7 +33,14 @@ class SchoolsController extends Controller
      */
     public function create()
     {
-        return view('school.create');
+        if (!Auth()->guest()) {
+            # code...
+            return view('school.create');
+        } else {
+            # code...
+            return view('auth.login');
+        }
+        
     }
 
     /**
@@ -52,9 +68,17 @@ class SchoolsController extends Controller
      */
     public function show(string $id)
     {
-        $school = School::find($id);
-        $blacklistings = Blacklisting::all()->where('university', $school->name);
-        return view('school.show')->with('school', $school)->with('blacklistings', $blacklistings);
+
+        if (!Auth()->guest()) {
+            # code...
+            $school = School::find($id);
+            $blacklistings = Blacklisting::all()->where('university', $school->name);
+            return view('school.show')->with('school', $school)->with('blacklistings', $blacklistings);
+        } else {
+            # code...
+            return view('auth.login');
+        }
+        
     }
 
     /**
@@ -62,10 +86,16 @@ class SchoolsController extends Controller
      */
     public function edit(string $id)
     {
-
-        $school = School::find($id);
-        // $students = School::all()->students()->where('id', 1);
-        return view('school.edit')->with('school', $school);
+        if (!Auth()->guest()) {
+            # code...
+            $school = School::find($id);
+            // $students = School::all()->students()->where('id', 1);
+            return view('school.edit')->with('school', $school);
+        } else {
+            # code...
+            return view('auth.login');
+        }
+        
     }
 
     /**
