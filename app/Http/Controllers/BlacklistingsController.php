@@ -41,14 +41,18 @@ class BlacklistingsController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
         $this->validate($request, [
             'name' => 'required',
             'surname' => 'required',
             'university' => 'required',
-            'reason' => 'required'
+            'reason' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
-        // $student_Id = [StudentsController::class, 'show'];
+        $newImageName = time() . '-' . $request->name . '.' . $request->image->extension();
+        $request->image->storeAs('public/images', $newImageName);
         
         $blacklisting = new Blacklisting;
         $blacklisting->candidate_firstname = $request->input('name');
@@ -56,6 +60,7 @@ class BlacklistingsController extends Controller
         $blacklisting->school = $request->input('university');
         $blacklisting->blacklist_reason = $request->input('reason');
         $blacklisting->school_id = $blacklisting->school;
+        $blacklisting->image_path = $newImageName;
         $blacklisting->save();
 
         return redirect('/blacklistings');

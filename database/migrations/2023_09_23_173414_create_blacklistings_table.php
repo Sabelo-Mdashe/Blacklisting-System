@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('candidate_lastname');
             $table->string('school');
             $table->mediumText('blacklist_reason');
-            $table->bigInteger('student_id');
+            // $table->bigInteger('student_id');
             $table->timestamps();
         });
     }

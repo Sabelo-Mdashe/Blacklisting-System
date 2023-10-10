@@ -45,7 +45,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('blacklistings.store') }}" method="POST" @class(['d-flex', 'gap-4', 'flex-column'])>
+            <form action="{{ route('blacklistings.store') }}" method="POST" @class(['d-flex', 'gap-4', 'flex-column']) enctype="multipart/form-data">
                 <div @class(['form-group'])>
                     <label for="name">Student Name</label>
                     <input type="text" name="name" @class(['form-control']) value="{{ $student->name }}">
@@ -65,6 +65,11 @@
                 <div class="form-group">
                     <textarea required name="reason" class="form-control" placeholder="Reason for blacklisting" style="height: 100px"></textarea>
                     {{-- <label for="floatingTextarea2">Comments</label> --}}
+                  </div>
+
+                  <div @class(['form-group'])>
+                    <label for="image">Upload Image</label>
+                    <input type="file" name="image" @class(['form-control'])>
                   </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     @csrf

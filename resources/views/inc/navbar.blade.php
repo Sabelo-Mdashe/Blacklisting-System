@@ -71,7 +71,7 @@
         font-family: 'MuseoModerno', cursive;
     }
 
-    span {
+    .blklst {
         text-decoration-line: line-through;
         text-decoration-color: red
     }

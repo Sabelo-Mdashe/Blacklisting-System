@@ -130,4 +130,10 @@ class SchoolsController extends Controller
 
         return redirect('/schools');
     }
+
+    public function searchSchool(Request $request) {
+
+        $schools = School::all()->where('name', $request->input('searchschool'));
+        return view('pages.schools')->with('schools', $schools);
+    }
 }

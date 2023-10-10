@@ -1,23 +1,28 @@
 @extends('layouts.app')
     @section('content')
 
-        {{-- SEARCH FUNCTION *** STILL NEED TO BE FUNCTIONAL --}}
+    <h1 @class(['mt-3', 'mb-3'])>Student Teachers</h1>
+    
+        <div @class(['d-flex', 'justify-content-between'])>
+            {{-- SEARCH FUNCTION *** STILL NEED TO BE FUNCTIONAL --}}
+            <div @class(['d-flex', 'gap-3', 'align-items-center'])>
+                <form action="search" method="GET" class="d-flex gap-2" role="search">
+                    <input name="search" class="p-2" style="border: 1px lightgrey solid; border-radius: .5em" type="search" placeholder="Search Student" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <a href="/students"><i class="fa-solid fa-arrow-rotate-right fs-3"></i></a>
+            </div>
 
-        {{-- <form class="d-flex mt-5" role="search">
-            <input class="me-2 p-2" style="border: 1px lightgrey solid; border-radius: .5em" type="search" placeholder="Search Student" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form> --}}
-
-        <h1 @class(['mt-3', 'mb-3'])>Student Teachers</h1>
-
-        {{-- IF STATEMENT *** TO DISPALY A MESSAGE WHEN NOTHING IS FOUNG *** STILL NEED TO MAKE IT WORK --}}
-        {{-- @if (count($students > 0)) --}}
-        
-            <div @class(['d-flex', 'justify-content-end', 'mb-3'])>
+            <div @class(['d-flex', 'justify-content-end'])>
                 <a href="/students/create">
                     <button @class(['btn', 'btn-default', 'btn-success'])>Add Student Teacher</button>
                 </a>
             </div>
+        </div>
+        
+        {{-- IF STATEMENT *** TO DISPALY A MESSAGE WHEN NOTHING IS FOUNG *** STILL NEED TO MAKE IT WORK --}}
+        {{-- @if (count($students > 0)) --}}
+        
             <table class="table table-hover">
                 <thead>
                   <tr>

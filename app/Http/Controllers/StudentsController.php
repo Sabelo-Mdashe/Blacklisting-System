@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\School;
 use App\Models\Student;
 
-
 use Illuminate\Http\Request;
 
 class StudentsController extends Controller
@@ -145,5 +144,11 @@ class StudentsController extends Controller
         $student->delete();
 
         return redirect('/students');
+    }
+
+    public function searchStudent(Request $request) {
+
+        $students = Student::all()->where('name', $request->input('search'));
+        return view('pages.students')->with('students', $students);
     }
 }

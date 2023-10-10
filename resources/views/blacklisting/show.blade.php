@@ -19,6 +19,8 @@
                 </form>
             </div>
         </div>
+        <h2>Blacklisting Evidence</h2>
+            <img src="{{ asset('public/storage/images/'.$blacklisting->image_path) }}" alt="evidence of blacklisting">
     @endsection
 
     <style>
