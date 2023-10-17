@@ -3,7 +3,7 @@
         <h1 @class(['mt-3', 'mb-3'])>Schools List</h1>
         <div @class(['d-flex', 'justify-content-between'])>
             <div @class(['d-flex', 'gap-3', 'align-items-center'])>
-                <form action="search" method="GET" class="d-flex gap-2" role="search">
+                <form action="#" method="GET" class="d-flex gap-2" role="search">
                     <input name="searchschool" class="p-2" type="search" placeholder="Search School" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
@@ -15,6 +15,8 @@
                 </a>
             </div>
         </div>
+        @if ($schools->count())
+            
         <table class="table">
             <thead>
               <tr>
@@ -22,7 +24,7 @@
                 <th scope="col">School Name</th>
                 <th scope="col">City</th>
                 <th scope="col">Province</th>
-                <th scope="col">Created On</th>
+                <th scope="col">Created</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -33,7 +35,7 @@
                     <td><a href="/schools/{{ $school->id }}" style="color: blue">{{ $school->name }}</a></td>
                     <td>{{ $school->city }}</td>
                     <td>{{ $school->province }}</td>
-                    <td>{{ $school->created_at }}</td>
+                    <td>{{ $school->created_at->diffForHumans() }}</td>
                     <td>
                         <div @class(['d-flex', 'gap-3'])>
                             <a href="/schools/{{ $school->id }}">
@@ -54,6 +56,9 @@
                 @endforeach
             </tbody>
           </table>
+        @else
+            <p>No schools found</p>
+        @endif
     @endsection
 
 <style>

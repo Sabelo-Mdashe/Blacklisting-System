@@ -31,6 +31,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::patch('/update/{user}', [HomeController::class, 'update']);
 
-Route::get('search', [StudentsController::class, 'searchStudent']);
+// Route::get('search', [StudentsController::class, 'searchStudent']);
 
-Route::get('search', [SchoolsController::class, 'searchSchool']);
+// Route::get('searchschool', [SchoolsController::class, 'searchSchool']);

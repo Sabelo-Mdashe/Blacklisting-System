@@ -6,8 +6,9 @@
         <div @class(['d-flex', 'justify-content-between'])>
             {{-- SEARCH FUNCTION *** STILL NEED TO BE FUNCTIONAL --}}
             <div @class(['d-flex', 'gap-3', 'align-items-center'])>
-                <form action="search" method="GET" class="d-flex gap-2" role="search">
-                    <input name="search" class="p-2" style="border: 1px lightgrey solid; border-radius: .5em" type="search" placeholder="Search Student" aria-label="Search">
+                <form action="#" method="GET" class="d-flex gap-2" role="search">
+                    <input name="search" class="p-2" style="border: 1px lightgrey solid; border-radius: .5em" 
+                    type="search" placeholder="Search Student" aria-label="Search" value="{{ request('search') }}">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <a href="/students"><i class="fa-solid fa-arrow-rotate-right fs-3"></i></a>

@@ -27,14 +27,14 @@
 
         <h4 style="color: red" @class(['mt-2', 'mb-3'])>Students Teachers Blacklisted at {{ $school->name }}</h4>
 
-        <table class="table table-hover">
+        <table class="table table-hover table-dark">
             <thead>
               <tr>
                 {{-- <th scope="col">ID</th> --}}
                 <th scope="col">First</th>
                 <th scope="col">Last</th>
                 <th scope="col">Reason</th>
-                <th scope="col">Blacklisted On</th>
+                <th scope="col">Blacklisted</th>
                 {{-- <th scope="col">Province</th>
                 <th scope="col">University_Id</th> --}}
                 

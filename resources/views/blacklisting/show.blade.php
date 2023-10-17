@@ -6,7 +6,7 @@
         <div class="card" style="width: 18rem; border-color: red;">
             <div class="card-body">
                 <h5 class="card-title">University: {{ $blacklisting->school }}</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Blacklisted on {{ $blacklisting->created_at }}</h6>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Blacklisted {{ $blacklisting->created_at->diffForHumans() }}</h6>
                 <p class="card-text">Reason:</p>
                 <p>{{ $blacklisting->blacklist_reason }}</p>
             </div>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <h2>Blacklisting Evidence</h2>
-            <img src="{{ asset('public/storage/images/'.$blacklisting->image_path) }}" alt="evidence of blacklisting">
+            <img src="{{ asset('storage/images/'.$blacklisting->image_path) }}" alt="evidence of blacklisting" class="w-50" @required(true)/>
     @endsection
 
     <style>

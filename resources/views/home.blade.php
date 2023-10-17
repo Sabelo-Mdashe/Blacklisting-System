@@ -7,7 +7,7 @@
             <div class="card mt-5 mb-3">
                 <div class="card-header" style="color: red; text-transform:uppercase; font-weight:bold">{{ __('Blacklisted Student Teachers') }}</div>
 
-                <div class="card-body">
+                <div class="card-body bg-dark">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -18,7 +18,7 @@
                     @endforeach --}}
                     {{-- {{ __('You are logged in!') }} --}}
 
-                    <table class="table">
+                    <table class="table table-dark">
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
@@ -26,7 +26,7 @@
                             <th scope="col">Last Name</th>
                             <th scope="col">University_Id</th>
                             <th scope="col">Reason</th>
-                            <th scope="col">Blacklisted On</th>
+                            <th scope="col">Blacklisted</th>
                             <th scope="col">Actions</th>
                           </tr>
                         </thead>
@@ -35,14 +35,14 @@
                             <tr>
                                 <th scope="row">{{ $blacklisting->id }}</th>
                                 <td>
-                                    <a style="color: blue" href="/blacklistings/{{ $blacklisting->id }}">
+                                    <a style="color: red" href="/blacklistings/{{ $blacklisting->id }}">
                                         {{ $blacklisting->candidate_firstname }}
                                     </a>
                                 </td>
                                 <td>{{ $blacklisting->candidate_lastname }}</td>
                                 <td>{{ $blacklisting->school }}</td>
                                 <td>{{ $blacklisting->blacklist_reason }}</td>
-                                <td>{{ $blacklisting->created_at }}</td>
+                                <td>{{ $blacklisting->created_at->diffForHumans() }}</td>
                                 <td>
                                     <div @class(['d-flex', 'gap-3'])>
                                         <a href="/blacklistings/{{ $blacklisting->id }}">
