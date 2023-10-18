@@ -17,11 +17,7 @@ class StudentsController extends Controller
 
         if (!Auth()->guest()) {
             # code...
-            if (request(['search'])) {
-                $students = Student::latest()->filter(request(['search']))->get();
-            } else {
-                $students = Student::paginate(10);
-            }
+            $students = Student::latest()->filter(request(['search']))->reorder('id', 'asc')->paginate(10);
             return view('pages.students')->with('students', $students);
         } else {
             # code...

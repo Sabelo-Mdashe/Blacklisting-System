@@ -88,4 +88,8 @@
     .hidden {
         gap: .5rem;
     }
+
+    .rounded-md {
+        border-radius: .5rem;
+    }
 </style>
