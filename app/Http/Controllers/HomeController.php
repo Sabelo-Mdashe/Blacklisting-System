@@ -28,19 +28,25 @@ class HomeController extends Controller
         $blacklistings = Blacklisting::paginate(10);
         return view('home')->with('blacklistings', $blacklistings);
     }
-    public function update(Request $request, string $id) {
+    public function updateProfile(Request $request, User $user) {
 
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
+            'avatar' => 'required'
         ]);
+
+        $avatarName = time() . '-' . $request->name . '.' . $request->avatar->extension();
+        $request->file('avatar')->store('public/avatars', $avatarName);
         
         // $user_id = auth()->user()->id;
-        $user = User::find($id);
+        // $user = User::find($id);
         $user->name = $request->input('username');
         $user->email = $request->input('email');
+        $user->avatar = $avatarName;
         $user->update();
 
-        return  $user;
+        return redirect('/');
     }
 }

@@ -29,8 +29,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::patch('/update/{user}', [HomeController::class, 'update']);
+// Route::get('update', [HomeController::class, 'update']);
+Route::put('/update/{user}', [HomeController::class, 'updateProfile']);
 
 Route::get('search', [StudentsController::class, 'searchStudent']);
 
-Route::get('search', [SchoolsController::class, 'searchSchool']);
+Route::get('searchschool', [SchoolsController::class, 'searchSchool']);

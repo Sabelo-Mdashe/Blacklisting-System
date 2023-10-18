@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->integer('school_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('avatar')->default('default.jpg');
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('students', function (Blueprint $table) {
-            $table->dropColumn('school_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('avatar');
         });
     }
 };

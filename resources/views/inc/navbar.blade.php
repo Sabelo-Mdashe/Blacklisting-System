@@ -41,18 +41,21 @@
                     @endif --}}
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
+                        <div @class(['d-flex', 'gap-1']) id="navbarDropdown" aria-haspopup="true" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="nav-avatar" src="storage/{{ Auth::user()->avatar }}" alt="">
+                            <a class="nav-link dropdown-toggle"  href="#" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+                        </div>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a href="" class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Profile</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
-                            <a href="" class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Profile</a>
                             {{-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button> --}}
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -75,4 +78,10 @@
         text-decoration-line: line-through;
         text-decoration-color: red
     }
+
+    .nav-avatar {
+        border-radius: 50%;
+        width: 2.5rem;
+    }
+
 </style>
