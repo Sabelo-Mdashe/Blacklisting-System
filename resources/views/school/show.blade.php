@@ -24,40 +24,43 @@
             </div>
         </div>
         <hr>
+        @if ($school->blacklistings->count())    
+            <h4 style="color: red" @class(['mt-2', 'mb-3'])>Students Teachers Blacklisted at {{ $school->name }}</h4>
 
-        <h4 style="color: red" @class(['mt-2', 'mb-3'])>Students Teachers Blacklisted at {{ $school->name }}</h4>
-
-        <table class="table table-hover table-dark">
-            <thead>
-              <tr>
-                {{-- <th scope="col">ID</th> --}}
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Blacklisted</th>
-                {{-- <th scope="col">Province</th>
-                <th scope="col">University_Id</th> --}}
-                
-                {{-- <th></th> --}}
-                {{-- <th>Actions</th> --}}
-              </tr>
-            </thead>
-            <tbody>
-                @foreach ($school->blacklistings as $blacklisting)
+            <table class="table table-hover table-dark">
+                <thead>
                 <tr>
-                    {{-- <form action="{{ route('blacklistings.store') }}" method="POST"> --}}
-                        {{-- <th scope="row">{{ $student->id }}</th> --}}
-                        <td><a>{{ $blacklisting->candidate_firstname }}</a></td>
-                        <td>{{ $blacklisting->candidate_lastname }}</td>
-                        <td>{{ $blacklisting->blacklist_reason }}</td>
-                        <td>{{ $blacklisting->created_at }}</td>
-                        {{-- <td>{{ $student->province }}</td>
-                        <td>{{ $student->university }}</td> --}}
-                    </form>
+                    {{-- <th scope="col">ID</th> --}}
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Reason</th>
+                    <th scope="col">Blacklisted</th>
+                    {{-- <th scope="col">Province</th>
+                    <th scope="col">University_Id</th> --}}
+                    
+                    {{-- <th></th> --}}
+                    {{-- <th>Actions</th> --}}
                 </tr>
-                @endforeach
-            </tbody>
-          </table>
+                </thead>
+                <tbody>
+                    @foreach ($school->blacklistings as $blacklisting)
+                    <tr>
+                        {{-- <form action="{{ route('blacklistings.store') }}" method="POST"> --}}
+                            {{-- <th scope="row">{{ $student->id }}</th> --}}
+                            <td><a>{{ $blacklisting->candidate_firstname }}</a></td>
+                            <td>{{ $blacklisting->candidate_lastname }}</td>
+                            <td>{{ $blacklisting->blacklist_reason }}</td>
+                            <td>{{ $blacklisting->created_at->diffForHumans() }}</td>
+                            {{-- <td>{{ $student->province }}</td>
+                            <td>{{ $student->university }}</td> --}}
+                        </form>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <p>No Student Teachers are Blacklisted at {{ $school->name }}</p>
+        @endif
 
     @endsection
 

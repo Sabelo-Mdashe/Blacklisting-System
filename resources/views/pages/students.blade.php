@@ -3,8 +3,8 @@
 
     <h1 @class(['mt-3', 'mb-3'])>Student Teachers</h1>
     
+    @if ($students->count())
         <div @class(['d-flex', 'justify-content-between'])>
-            {{-- SEARCH FUNCTION *** STILL NEED TO BE FUNCTIONAL --}}
             <div @class(['d-flex', 'gap-3', 'align-items-center'])>
                 <form action="#" method="GET" class="d-flex gap-2" role="search">
                     <input name="search" class="p-2" style="border: 1px lightgrey solid; border-radius: .5em" 
@@ -13,6 +13,7 @@
                 </form>
                 <a href="/students"><i class="fa-solid fa-arrow-rotate-right fs-3"></i></a>
             </div>
+    @endif
 
             <div @class(['d-flex', 'justify-content-end'])>
                 <a href="/students/create">
@@ -21,8 +22,8 @@
             </div>
         </div>
         
-        {{-- IF STATEMENT *** TO DISPALY A MESSAGE WHEN NOTHING IS FOUNG *** STILL NEED TO MAKE IT WORK --}}
-        {{-- @if (count($students > 0)) --}}
+        
+        @if ($students->count())
         
             <table class="table table-hover">
                 <thead>
@@ -33,7 +34,7 @@
                     <th scope="col">Address</th>
                     <th scope="col">City</th>
                     <th scope="col">Province</th>
-                    <th scope="col">University_Id</th>
+                    <th scope="col">University</th>
                     <th scope="col">Actions</th>
                     {{-- <th></th> --}}
                     {{-- <th>Actions</th> --}}
@@ -49,7 +50,7 @@
                             <td>{{ $student->address }}</td>
                             <td>{{ $student->city }}</td>
                             <td>{{ $student->province }}</td>
-                            <td>{{ $student->university }}</td>
+                            <td>{{ $student->school->name }}</td>
                             {{-- <td>{{ $student->created_at }}</td> --}}
                             <td>
                                 <div @class(['d-flex', 'gap-3'])>
@@ -73,13 +74,32 @@
                     @endforeach
                 </tbody>
               </table>
-        {{-- @else
-            <p>No Student Teachers found</p>
-        @endif --}}
+              @if (request(['search']))
+                  
+              @else                  
+                {{ $students->links() }}
+              @endif
+        @else
+            <p>No Student Teachers found on the System. Please add Students</p>
+        @endif
     @endsection
 
     <style>
         .submit {
             background-color:crimson!important;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .flex {
+            justify-content: space-between;
+            gap: .5rem
+        }
+
+        .hidden {
+            gap: .5rem;
         }
     </style>

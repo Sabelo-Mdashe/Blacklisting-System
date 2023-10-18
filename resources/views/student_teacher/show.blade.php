@@ -24,7 +24,7 @@
             </div>
             <div class="card-body">
               <h5 class="card-title"><b>Name:</b> {{ $student->name }} {{ $student->surname }}</h5>
-              <h5 class="card-title"><b>Institution:</b> {{ $student->university }}</h5>
+              <h5 class="card-title"><b>Institution:</b> {{ $student->school->name }}</h5>
               <p class="card-text"><b>Location: </b>{{ $student->address }}, {{ $student->city }}, {{ $student->province }}</p>
               <a href="/students/{{$student->id}}/edit"><button @class(['mt-3', 'btn', 'btn-default', 'btn-light'])>Edit Teacher</button></a>
               {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
@@ -48,15 +48,17 @@
             <form action="{{ route('blacklistings.store') }}" method="POST" @class(['d-flex', 'gap-4', 'flex-column']) enctype="multipart/form-data">
                 <div @class(['form-group'])>
                     <label for="name">Student Name</label>
-                    <input type="text" name="name" @class(['form-control']) value="{{ $student->name }}">
+                    <input type="text" name="name" @class(['form-control']) value="{{ $student->name }}" readonly>
                 </div>
                 <div @class(['form-group'])>
                     <label for="surname">Last Name</label>
-                    <input type="text" name="surname" @class(['form-control']) value="{{ $student->surname }}">
+                    <input type="text" name="surname" @class(['form-control']) value="{{ $student->surname }}" readonly>
                 </div>
                 <div @class(['form-group'])>
                     <label for="university">University</label>
-                    <input type="text" name="university" @class(['form-control']) value="{{ $student->university }}">
+                    <input type="text" name="university" @class(['form-control']) value="{{ $student->university }}" hidden>
+                    <input type="text" value="{{ $student->school->name }}" @class(['form-control']) readonly>
+
                 </div>
                 {{-- <div @class(['form-group'])>
                     <textarea name="reason" cols="50" rows="10" placeholder="Reason for blacklisting"></textarea>

@@ -24,7 +24,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Last Name</th>
-                            <th scope="col">University_Id</th>
+                            <th scope="col">University</th>
                             <th scope="col">Reason</th>
                             <th scope="col">Blacklisted</th>
                             <th scope="col">Actions</th>

@@ -59,6 +59,13 @@
             </tbody>
           </table>
         @else
-            No Students are blacklisted
+            <p>No Blacklistings found on the System.</p>
         @endif
     @endsection
+
+    <style>
+        p {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    </style>

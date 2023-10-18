@@ -10,6 +10,13 @@ class School extends Model
 {
     use HasFactory;
 
+    public function scopeFilter($query, array $filters) {
+        
+        if ($filters['searchschool'] ?? false) {
+            $query->where('name', 'LIKE', '%' . request('searchschool') . '%');
+        }
+    }
+
     // public function students(): HasMany {
     //     return $this->hasMany(Student::class);
     // }

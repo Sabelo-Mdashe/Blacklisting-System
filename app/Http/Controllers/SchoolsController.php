@@ -18,7 +18,12 @@ class SchoolsController extends Controller
     {
         if (!Auth()->guest()) {
             # code...
-            $schools = School::all();
+            if (request(['searchschool'])) {
+                $schools = School::latest()->filter(request(['searchschool']))->reorder('id', 'asc')->get();
+            } else {
+                $schools = School::paginate(10);
+            }
+
             return view('pages.schools')->with('schools', $schools);
         } else {
             # code...
@@ -131,9 +136,9 @@ class SchoolsController extends Controller
         return redirect('/schools');
     }
 
-    public function searchSchool(Request $request) {
+    // public function searchSchool(Request $request) {
 
-        $schools = School::all()->where('name', $request->input('searchschool'));
-        return view('pages.schools')->with('schools', $schools);
-    }
+    //     $schools = School::all()->where('name', $request->input('searchschool'));
+    //     return view('pages.schools')->with('schools', $schools);
+    // }
 }

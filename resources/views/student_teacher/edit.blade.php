@@ -25,7 +25,8 @@
             </div>
             <div @class(['form-group'])>
                 <label for="province">University</label>
-                <input type="text" name="university" value="{{ $student->university }}" @class(['form-control', 'w-50'])>
+                <input type="text" name="university" value="{{ $student->university }}" @class(['form-control', 'w-50']) hidden>
+                <input type="text" name="university" value="{{ $student->school->name }}" @class(['form-control', 'w-50'])>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 @method('PATCH')

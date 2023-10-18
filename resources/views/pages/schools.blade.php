@@ -1,20 +1,22 @@
 @extends('layouts.app')
     @section('content')
         <h1 @class(['mt-3', 'mb-3'])>Schools List</h1>
-        <div @class(['d-flex', 'justify-content-between'])>
-            <div @class(['d-flex', 'gap-3', 'align-items-center'])>
-                <form action="#" method="GET" class="d-flex gap-2" role="search">
-                    <input name="searchschool" class="p-2" type="search" placeholder="Search School" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <a href="/schools"><i class="fa-solid fa-arrow-rotate-right fs-3"></i></a>
+        @if ($schools->count())
+            <div @class(['d-flex', 'justify-content-between'])>
+                    <div @class(['d-flex', 'gap-3', 'align-items-center'])>
+                        <form action="#" method="GET" class="d-flex gap-2" role="search">
+                            <input name="searchschool" class="p-2" type="search" placeholder="Search School" aria-label="Search" value="{{ request('searchschool') }}">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                        <a href="/schools"><i class="fa-solid fa-arrow-rotate-right fs-3"></i></a>
+                    </div>
+        @endif
+                <div @class(['d-flex', 'justify-content-end'])>
+                    <a href="/schools/create">
+                        <button @class(['btn', 'btn-default', 'btn-success'])>Add School</button>
+                    </a>
+                </div>
             </div>
-            <div @class(['d-flex', 'justify-content-end'])>
-                <a href="/schools/create">
-                    <button @class(['btn', 'btn-default', 'btn-success'])>Add School</button>
-                </a>
-            </div>
-        </div>
         @if ($schools->count())
             
         <table class="table">
@@ -55,9 +57,14 @@
                 </tr>
                 @endforeach
             </tbody>
-          </table>
+        </table>
+        @if (request(['searchschool']))
+            
+        @else  
+            {{ $schools->links() }}
+        @endif
         @else
-            <p>No schools found</p>
+            <p>No Student Teachers found on the System. Please add Students</p>
         @endif
     @endsection
 
@@ -66,5 +73,19 @@
         /* width: 20%; */
         border: 1px solid lightgrey;
         border-radius: .375rem;
+    }
+
+    p {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .flex {
+        justify-content: space-between;
+        gap: .5rem
+    }
+
+    .hidden {
+        gap: .5rem;
     }
 </style>

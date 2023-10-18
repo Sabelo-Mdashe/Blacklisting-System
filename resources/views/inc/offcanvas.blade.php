@@ -6,9 +6,9 @@
     <div class="offcanvas-body mt-1">
         <form action="/update/{{ Auth::user()->id }}" method="POST" enctype="multipart/form-data" @class(['d-flex', 'flex-column', 'gap-3'])>
             <div @class(['form-group'])>
-                <img @class(['profile-avatar', 'form-control']) src="storage/{{ Auth::user()->avatar }}" alt="">
+                <img @class(['profile-avatar', 'form-control']) src="{{ url('/') }}/storage/avatars/{{ Auth::user()->avatar }}" alt="">
                 {{-- <button >Upload Avatar</button> --}}
-                <input @class(['form-control', 'mt-2']) type="file" name="avatar">
+                <input type="file" name="avatar" @class(['form-control', 'mt-2']) >
             </div>
             <div @class(['form-group'])>
                 <label for="name">Username:</label>
@@ -22,6 +22,12 @@
             @csrf
             <button class="btn btn-success mt-3 me-md-2" type="submit">Update Profile</button>
         </form>
+
+        <form action="/delete/{{ Auth::user()->id }}" method="POST">
+            @method('DELETE')
+            @csrf
+            <button @class(['btn', 'btn-danger', 'mt-3', 'me-md-2', 'form-control']) type="submit">Delete Profile</button>
+        </form>
     </div>
 </div>
 
@@ -32,6 +38,10 @@
 
     .btn-success {
         background-color: darkgreen!important;
+    }
+
+    .btn-danger {
+        background-color: crimson!important;
     }
 
     .profile-avatar {
