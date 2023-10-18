@@ -17,7 +17,7 @@ class StudentsController extends Controller
 
         if (!Auth()->guest()) {
             # code...
-            $students = Student::all();
+            $students = Student::latest()->filter(request(['search']))->get();
             return view('pages.students')->with('students', $students);
         } else {
             # code...
@@ -146,9 +146,9 @@ class StudentsController extends Controller
         return redirect('/students');
     }
 
-    public function searchStudent(Request $request) {
+    // public function searchStudent() {
 
-        $students = Student::all()->where('name', $request->input('search'));
-        return view('pages.students')->with('students', $students);
-    }
+    //     $students = ;
+    //     return view('pages.students')->with('students', $students);
+    // }
 }

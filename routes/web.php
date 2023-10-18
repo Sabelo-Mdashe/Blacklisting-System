@@ -32,6 +32,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('update', [HomeController::class, 'update']);
 Route::put('/update/{user}', [HomeController::class, 'updateProfile']);
 
-Route::get('search', [StudentsController::class, 'searchStudent']);
+// Route::get('search', [StudentsController::class, 'searchStudent']);
 
-Route::get('searchschool', [SchoolsController::class, 'searchSchool']);
+// Route::get('searchschool', [SchoolsController::class, 'searchSchool']);

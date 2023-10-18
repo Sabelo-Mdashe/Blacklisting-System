@@ -12,7 +12,8 @@
                 <button @class(['btn', 'btn-default', 'btn-success'])>Add Blacklisting</button>
             </a>
         </div> --}}
-        <table class="table">
+        @if ($blacklistings->count())    
+        <table class="table table-dark">
             <thead>
               <tr>
                 <th scope="col">ID</th>
@@ -20,7 +21,7 @@
                 <th scope="col">Last</th>
                 <th scope="col">University</th>
                 <th scope="col">Reason</th>
-                <th scope="col">Blacklisted On</th>
+                <th scope="col">Blacklisted</th>
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -29,14 +30,14 @@
                 <tr>
                     <th scope="row">{{ $blacklisting->id }}</th>
                     <td>
-                        <a style="color: blue" href="/blacklistings/{{ $blacklisting->id }}">
+                        <a style="color: red" href="/blacklistings/{{ $blacklisting->id }}">
                             {{ $blacklisting->candidate_firstname }}
                         </a>
                     </td>
                     <td>{{ $blacklisting->candidate_lastname }}</td>
                     <td>{{ $blacklisting->school }}</td>
                     <td>{{ $blacklisting->blacklist_reason }}</td>
-                    <td>{{ $blacklisting->created_at }}</td>
+                    <td>{{ $blacklisting->created_at->diffForHumans() }}</td>
                     <td>
                         <div @class(['d-flex', 'gap-3'])>
                             <a href="/blacklistings/{{ $blacklisting->id }}">
@@ -57,4 +58,7 @@
                 @endforeach
             </tbody>
           </table>
+        @else
+            No Students are blacklisted
+        @endif
     @endsection

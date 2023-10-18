@@ -11,6 +11,13 @@ class Student extends Model
 {
     use HasFactory;
 
+    public function scopeFilter($query, array $filters) {
+        
+        if ($filters['search'] ?? false) {
+            $query->where('name', 'LIKE', '%' . request('search') . '%')->orWhere('surname', 'LIKE', '%' . request('search') . '%');
+        }
+    }
+
     // protected $fillable = ['name', 'surname', 'address', 'city', 'province', 'university'];
     
     public function school(): BelongsTo {
