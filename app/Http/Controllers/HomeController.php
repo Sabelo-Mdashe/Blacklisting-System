@@ -33,18 +33,22 @@ class HomeController extends Controller
 
         // dd($request->all());
         $this->validate($request, [
-            'username' => 'required',
-            'email' => 'required',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'name' => ['required', 'string', 'max:255'],
+            'surname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email'],
+            'avatar' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'username' => ['required', 'string', 'max:64',],
         ]);
 
-        $avatarName = time() . '-' . $request->username . '.' . $request->avatar->extension();
+        $avatarName = time() . '-' . $request->name . '.' . $request->avatar->extension();
         $request->avatar->storeAs('public/avatars', $avatarName);
         
         $user = User::find($id);
-        $user->name = $request->input('username');
+        $user->name = $request->input('name');
+        $user->surname = $request->input('surname');
         $user->email = $request->input('email');
         $user->avatar = $avatarName;
+        $user->username = $request->input('username');
         $user->update();
 
         return redirect('/');

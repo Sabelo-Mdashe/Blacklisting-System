@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+  <nav class="navbar navbar-expand-md bg-dark border-bottom border-body shadow-sm" data-bs-theme="dark">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
           <span @class(['blklst'])>Blacklisting</span> System
@@ -44,7 +44,7 @@
                         <div @class(['d-flex', 'gap-1']) id="navbarDropdown" aria-haspopup="true" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img class="nav-avatar" src="{{ url('/') }}/storage/avatars/{{ Auth::user()->avatar }}" alt="">
                             <a class="nav-link dropdown-toggle"  href="#" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->username }}
                             </a>
                         </div>
 

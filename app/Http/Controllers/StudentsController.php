@@ -17,7 +17,7 @@ class StudentsController extends Controller
 
         if (!Auth()->guest()) {
             # code...
-            $students = Student::latest()->filter(request(['search']))->reorder('id', 'asc')->paginate(10);
+            $students = Student::latest()->filter(request(['search']))->reorder('id', 'asc')->paginate(15);
             return view('pages.students')->with('students', $students);
         } else {
             # code...
@@ -29,7 +29,7 @@ class StudentsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create( )
+    public function create()
     {
 
         if (!Auth()->guest()) {
@@ -97,9 +97,10 @@ class StudentsController extends Controller
 
         if (!Auth()->guest()) {
             # code...
+            $schools = School::all();
             $student = Student::find($id);
             // $student->name
-            return view('student_teacher.edit')->with('student', $student);
+            return view('student_teacher.edit')->with('student', $student)->with('schools', $schools);
         } else {
             # code...
             return view('auth.login');
@@ -128,7 +129,7 @@ class StudentsController extends Controller
         $student->city = $request->input('city');
         $student->province = $request->input('province');
         $student->university = $request->input('university');
-        // $student->school_id = $request->input();
+        $student->school_id = $student->university;
         $student->update();
 
         return view('student_teacher.show')->with('student', $student);

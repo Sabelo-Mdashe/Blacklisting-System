@@ -23,10 +23,21 @@
                 <label for="province">Province</label>
                 <input type="text" name="province" value="{{ $student->province }}" @class(['form-control', 'w-50'])>
             </div>
-            <div @class(['form-group'])>
-                <label for="province">University</label>
+            {{-- <div @class(['form-group'])>
+                <label for="university">University</label>
                 <input type="text" name="university" value="{{ $student->university }}" @class(['form-control', 'w-50']) hidden>
                 <input type="text" name="university" value="{{ $student->school->name }}" @class(['form-control', 'w-50'])>
+            </div> --}}
+
+            <div @class(['form-group'])>
+                <label for="university">University</label>
+                {{-- <input type="text" name="university" @class(['form-control', 'w-50'])> --}}
+                <select name="university" @class(['form-control', 'w-50'])>
+                    <option value="">{{ $student->school->name }}</option>
+                    @foreach ($schools as $school)
+                        <option value="{{ $school->id }}">{{ $school->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 @method('PATCH')

@@ -25,7 +25,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">School Name</th>
                 <th scope="col">City</th>
-                <th scope="col">Province</th>
+                <th scope="col">Area/Borough</th>
                 <th scope="col">Created</th>
                 <th scope="col">Actions</th>
               </tr>

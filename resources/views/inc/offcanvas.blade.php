@@ -11,8 +11,16 @@
                 <input type="file" name="avatar" @class(['form-control', 'mt-2']) >
             </div>
             <div @class(['form-group'])>
-                <label for="name">Username:</label>
-                <input type="text" name="username" @class(['form-control']) value="{{ Auth::user()->name }}">
+                <label for="name">Name:</label>
+                <input type="text" name="name" @class(['form-control']) value="{{ Auth::user()->name }}">
+            </div>
+            <div @class(['form-group'])>
+                <label for="surname">Surname:</label>
+                <input type="text" name="surname" @class(['form-control']) value="{{ Auth::user()->surname }}">
+            </div>
+            <div @class(['form-group'])>
+                <label for="username">Userame:</label>
+                <input type="text" name="username" @class(['form-control']) value="{{ Auth::user()->username }}">
             </div>
             <div @class(['form-group'])>
                 <label for="email">Email:</label>

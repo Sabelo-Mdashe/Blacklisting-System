@@ -18,7 +18,7 @@ class SchoolsController extends Controller
     {
         if (!Auth()->guest()) {
             # code...
-            $schools = School::latest()->filter(request(['searchschool']))->reorder('id', 'asc')->paginate(10);
+            $schools = School::latest()->filter(request(['searchschool']))->reorder('id', 'asc')->paginate(15);
             return view('pages.schools')->with('schools', $schools);
         } else {
             # code...

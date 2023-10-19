@@ -34,6 +34,8 @@
             <span><b>Created on</b> {{ $student->created_at }}</span>
             </div>
           </div>
+          Blacklisted by:
+          <p>{{ $student->blacklistings->school }}</p>
     </div>
   
   <!-- Modal -->
@@ -56,8 +58,8 @@
                 </div>
                 <div @class(['form-group'])>
                     <label for="university">University</label>
-                    <input type="text" name="university" @class(['form-control']) value="{{ $student->university }}" hidden>
-                    <input type="text" value="{{ $student->school->name }}" @class(['form-control']) readonly>
+                    <input type="text" name="university_id" @class(['form-control']) value="{{ $student->university }}" hidden>
+                    <input type="text" name="university" value="{{ $student->school->name }}" @class(['form-control']) readonly>
 
                 </div>
                 {{-- <div @class(['form-group'])>

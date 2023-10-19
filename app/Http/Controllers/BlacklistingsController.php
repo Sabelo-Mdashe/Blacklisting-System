@@ -59,7 +59,7 @@ class BlacklistingsController extends Controller
         $blacklisting->candidate_lastname = $request->input('surname');
         $blacklisting->school = $request->input('university');
         $blacklisting->blacklist_reason = $request->input('reason');
-        $blacklisting->school_id = $blacklisting->school;
+        $blacklisting->school_id = $request->input('university_id');
         $blacklisting->image_path = $newImageName;
         $blacklisting->save();
 
