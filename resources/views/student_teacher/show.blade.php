@@ -34,8 +34,8 @@
             <span><b>Created on</b> {{ $student->created_at }}</span>
             </div>
           </div>
-          Blacklisted by:
-          <p>{{ $student->blacklistings->school }}</p>
+          {{-- Blacklisted by: --}}
+          {{-- <p>{{ $student->blacklistings->school }}</p> --}}
     </div>
   
   <!-- Modal -->
