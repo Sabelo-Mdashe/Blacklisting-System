@@ -5,23 +5,51 @@
             <div @class(['form-group'])>
                 <label for="name">First Name</label>
                 <input type="text" name="name" value="{{ $student->name }}" @class(['form-control', 'w-50'])>
+
+                {{-- Error handling for the name field --}}
+                @error('name')
+                    <p @class(['text-danger'])>{{ $message }}</p>
+                @enderror
             </div>
+
             <div @class(['form-group'])>
                 <label for="surname">Last Name</label>
                 <input type="text" name="surname" value="{{ $student->surname }}" @class(['form-control', 'w-50'])>
+
+                {{-- Error handling for the surname filed --}} 
+                @error('surname')
+                    <p @class(['text-danger'])>{{ $message }}</p>
+                @enderror
             </div>
 
             <div @class(['form-group'])>
                 <label for="address">Address</label>
                 <input type="text" name="address" value="{{ $student->address }}" @class(['form-control', 'w-50'])>
+
+                {{-- Error handling for the address field --}}
+                @error('address')
+                    <p @class(['text-danger'])>{{ $message }}</p>
+                @enderror
             </div>
+
             <div @class(['form-group'])>
                 <label for="city">City</label>
                 <input type="text" name="city" value="{{ $student->city }}" @class(['form-control', 'w-50'])>
+
+                {{-- Error handling for the city field --}}
+                @error('city')
+                    <p @class(['text-danger'])>{{ $message }}</p>
+                @enderror
             </div>
+            
             <div @class(['form-group'])>
                 <label for="province">Province</label>
                 <input type="text" name="province" value="{{ $student->province }}" @class(['form-control', 'w-50'])>
+
+                {{-- Error handling for the province field --}}
+                @error('provice')
+                    <p @class(['text-danger'])>{{ $message }}</p>
+                @enderror
             </div>
             {{-- <div @class(['form-group'])>
                 <label for="university">University</label>

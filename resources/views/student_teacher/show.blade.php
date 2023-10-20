@@ -73,7 +73,11 @@
 
                   <div @class(['form-group'])>
                     <label for="image">Upload Image</label>
-                    <input type="file" name="image" @class(['form-control'])>
+                    <input type="file" name="image" @class(['form-control']) required>
+
+                    @error('image')
+                        <p>{{ $message }}</p>
+                    @enderror
                   </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                     @csrf

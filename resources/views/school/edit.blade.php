@@ -5,15 +5,33 @@
             <div @class(['form-group'])>
                 <label for="name">First Name</label>
                 <input type="text" name="name" value="{{ $school->name }}" @class(['form-control', 'w-50'])>
+
+                {{-- Error handling for the school name field --}}
+                @error('name')
+                    <p @class(['text-danger'])>{{ $message }}</p>
+                @enderror
             </div>
+
             <div @class(['form-group'])>
                 <label for="city">City</label>
                 <input type="text" name="city" value="{{ $school->city }}" @class(['form-control', 'w-50'])>
+
+                {{-- Error handling for the city field --}}
+                @error('city')
+                    <p @class(['text-danger'])>{{ $message }}</p>
+                @enderror
             </div>
+
             <div @class(['form-group'])>
                 <label for="province">Province</label>
                 <input type="text" name="province" value="{{ $school->province }}" @class(['form-control', 'w-50'])>
+
+                {{-- Error handling for the province field --}}
+                @error('province')
+                    <p @class(['text-danger'])>{{ $message }}</p>
+                @enderror
             </div>
+
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                 @method('PATCH')
                 @csrf
@@ -22,10 +40,3 @@
             </div>
         </form>
     @endsection
-
-    <style>
-        .btn-success {
-            background-color: #198754!important;
-        }
-        
-    </style>
